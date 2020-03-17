@@ -5,6 +5,7 @@ from ...checkout import error_codes as checkout_error_codes
 from ...core import error_codes as core_error_codes
 from ...core.permissions import get_permissions_enum_list
 from ...core.weight import WeightUnits
+from ...discount import error_codes as discount_error_codes
 from ...extensions import error_codes as extensions_error_codes
 from ...extensions.plugins.vatlayer import TaxRateType as CoreTaxRateType
 from ...giftcard import error_codes as giftcard_error_codes
@@ -85,6 +86,7 @@ WeightUnitsEnum = graphene.Enum(
 
 AccountErrorCode = graphene.Enum.from_enum(account_error_codes.AccountErrorCode)
 CheckoutErrorCode = graphene.Enum.from_enum(checkout_error_codes.CheckoutErrorCode)
+DiscountErrorCode = graphene.Enum.from_enum(discount_error_codes.DiscountErrorCode)
 ExtensionsErrorCode = graphene.Enum.from_enum(
     extensions_error_codes.ExtensionsErrorCode
 )
@@ -97,7 +99,7 @@ PaymentErrorCode = graphene.Enum.from_enum(payment_error_codes.PaymentErrorCode)
 ProductErrorCode = graphene.Enum.from_enum(product_error_codes.ProductErrorCode)
 ShopErrorCode = graphene.Enum.from_enum(core_error_codes.ShopErrorCode)
 ShippingErrorCode = graphene.Enum.from_enum(shipping_error_codes.ShippingErrorCode)
-StockErrorCode = graphene.Enum.from_enum(warehouse_error_codes.StockErorrCode)
+StockErrorCode = graphene.Enum.from_enum(warehouse_error_codes.StockErrorCode)
 WarehouseErrorCode = graphene.Enum.from_enum(warehouse_error_codes.WarehouseErrorCode)
 WebhookErrorCode = graphene.Enum.from_enum(webhook_error_codes.WebhookErrorCode)
 WishlistErrorCode = graphene.Enum.from_enum(wishlist_error_codes.WishlistErrorCode)
