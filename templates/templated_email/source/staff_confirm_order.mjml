@@ -11,7 +11,7 @@
     <mj-section>
       <mj-column>
         <mj-text font-size="16px">
-          {% trans "Hi!" context "Standard e-mail greeting" %}
+          {% trans "Hello," context "Standard e-mail greeting" %}
         </mj-text>
         <mj-text>
           {% blocktrans trimmed context "Order confirmation staff e-mail text" %}

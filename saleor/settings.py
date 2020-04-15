@@ -13,6 +13,9 @@ from django_prices.utils.formatting import get_currency_fraction
 from sentry_sdk.integrations.django import DjangoIntegration
 
 
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
+
 def get_list(text):
     return [item.strip() for item in text.split(",")]
 
@@ -48,60 +51,36 @@ ALLOWED_CLIENT_HOSTS = get_list(
 )
 
 INTERNAL_IPS = get_list(os.environ.get("INTERNAL_IPS", "127.0.0.1"))
-
-DATABASES = {
-    "default": dj_database_url.config(
-        default="postgres://saleor:saleor@localhost:5432/saleor", conn_max_age=600
-    )
-}
-
+# postgres://USER:PASSWORD@DOMAIN:PORT/DATABASE
+production = get_bool_from_env("PRODUCTION", False)
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    }
+if not 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        "default": {
+            "ENGINE":'django.db.backends.postgresql',
+            "NAME": os.environ.get("DB_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+            "USER": os.environ.get("DB_USER", "user"),
+            "PASSWORD": os.environ.get("DB_PASSWORD", "password"),
+            "HOST": os.environ.get("DB_HOST", "localhost"),
+            "PORT": os.environ.get("DB_PORT", "5432"),
+        }
+    }
 
 TIME_ZONE = "America/Chicago"
 LANGUAGE_CODE = "en"
 LANGUAGES = [
-    ("ar", "Arabic"),
-    ("az", "Azerbaijani"),
-    ("bg", "Bulgarian"),
-    ("bn", "Bengali"),
-    ("ca", "Catalan"),
-    ("cs", "Czech"),
-    ("da", "Danish"),
-    ("de", "German"),
-    ("el", "Greek"),
     ("en", "English"),
     ("es", "Spanish"),
-    ("es-co", "Colombian Spanish"),
-    ("et", "Estonian"),
-    ("fa", "Persian"),
-    ("fr", "French"),
-    ("hi", "Hindi"),
-    ("hu", "Hungarian"),
-    ("hy", "Armenian"),
-    ("id", "Indonesian"),
-    ("is", "Icelandic"),
-    ("it", "Italian"),
-    ("ja", "Japanese"),
-    ("ko", "Korean"),
-    ("lt", "Lithuanian"),
-    ("mn", "Mongolian"),
-    ("nb", "Norwegian"),
-    ("nl", "Dutch"),
-    ("pl", "Polish"),
-    ("pt", "Portuguese"),
-    ("pt-br", "Brazilian Portuguese"),
-    ("ro", "Romanian"),
-    ("ru", "Russian"),
-    ("sk", "Slovak"),
-    ("sq", "Albanian"),
-    ("sr", "Serbian"),
-    ("sw", "Swahili"),
-    ("sv", "Swedish"),
-    ("th", "Thai"),
-    ("tr", "Turkish"),
-    ("uk", "Ukrainian"),
-    ("vi", "Vietnamese"),
-    ("zh-hans", "Simplified Chinese"),
-    ("zh-hant", "Traditional Chinese"),
 ]
 LOCALE_PATHS = [os.path.join(PROJECT_ROOT, "locale")]
 USE_I18N = True
@@ -182,7 +161,7 @@ TEMPLATES = [
 ]
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "sdlkauflk2j3f902u3lj")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

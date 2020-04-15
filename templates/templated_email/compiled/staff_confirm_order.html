@@ -59,7 +59,7 @@
         </style>
         <style type="text/css">address {
     font-style: inherit;
-    font-family: Ubuntu, Helvetica, Arial;
+    font-family: Helvetica, Arial, Lucida Sans Unicode;
   }</style>
         
       </head>
@@ -107,7 +107,8 @@
           <tr>
             <td style="padding: 5px; width: 176px;" width="176">
               
-      <img height="38" src="{{ logo_url }}" style="border:0;display:block;outline:none;text-decoration:none;height:38px;width:100%;font-size:13px;" width="176">
+      <img height="38" src="{{" style="border:0;display:block;outline:none;text-decoration:none;height:38px;width:100%;font-size:13px;" width="176"
+      />
     
             </td>
           </tr>
@@ -149,12 +150,16 @@
       <![endif]-->
     
       
-      <div style="margin:0px auto;max-width:600px;">
+      <div  style="margin:0px auto;max-width:600px;">
         
-        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"
+        >
           <tbody>
             <tr>
-              <td style="direction: ltr; font-size: 0px; padding: 20px 0; text-align: center;" align="center">
+              <td
+                 style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"
+              >
                 <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -165,29 +170,41 @@
             >
           <![endif]-->
             
-      <div class="mj-column-per-100 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+      <div
+         class="mj-column-per-100 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"
+      >
         
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+      <table
+         border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"
+      >
         
             <tr>
-              <td align="left" style="font-size: 0px; padding: 10px 25px; word-break: break-word;">
+              <td
+                 align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+              >
                 
-      <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:1;text-align:left;color:#000000;">{% trans "Hi!" context "Standard e-mail greeting" %}</div>
+      <div
+         style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:1;text-align:left;color:#000000;"
+      >{% trans "Hello," context "Standard e-mail greeting" %}</div>
     
               </td>
             </tr>
           
             <tr>
-              <td align="left" style="font-size: 0px; padding: 10px 25px; word-break: break-word;">
+              <td
+                 align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+              >
                 
-      <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">{% blocktrans trimmed context "Order confirmation staff e-mail text" %}
-            Someone placed a new order in your store. To see order details please visit: <a href="{{ order_details_url }}">{{ order_details_url }}</a>
-          {% endblocktrans %}</div>
+      <div
+         style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;"
+      >{% blocktrans trimmed context "Order confirmation staff e-mail text" %}
+            Someone placed a new order in your store. To see order details please visit: <a href="{{ order_details_url }}">{{ order_details_url }}
+          {% endblocktrans %}</td></tr></tbody></table></td></tr></table></div>
     
               </td>
             </tr>
           
-      </table>
+      </tbody></table>
     
       </div>
     
@@ -198,10 +215,10 @@
       
                   </table>
                 <![endif]-->
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              
+            
+          
+        
         
       </div>
     
@@ -619,7 +636,7 @@
       <![endif]-->
     
     
-      </div>
+      
     
       </body>
     </html>

@@ -6552,7 +6552,7 @@ msgstr ""
 #: templates/templated_email/source/set_password.mjml:13
 #: templates/templated_email/source/update_fulfillment.mjml:13
 msgctxt "Standard e-mail greeting"
-msgid "Hi!"
+msgid "Hello,"
 msgstr ""
 
 #: templates/templated_email/source/account_delete.mjml:16

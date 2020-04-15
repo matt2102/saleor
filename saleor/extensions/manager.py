@@ -370,14 +370,14 @@ class ExtensionsManager(PaymentInterface):
     def save_plugin_configuration(self, plugin_name, cleaned_data: dict):
         plugin_configuration = PluginConfiguration.objects.get(name=plugin_name)
         for plugin in self.plugins:
-            if plugin.PLUGIN_NAME.upper() == plugin_name:
+            if plugin.PLUGIN_NAME.upper() == plugin_name.upper():
                 return plugin.save_plugin_configuration(
                     plugin_configuration, cleaned_data
                 )
 
     def get_plugin(self, plugin_name: str) -> Optional["BasePlugin"]:
         for plugin in self.plugins:
-            if plugin.PLUGIN_NAME.upper() == plugin_name:
+            if plugin.PLUGIN_NAME.upper() == plugin_name.upper():
                 return plugin
         return None
 
